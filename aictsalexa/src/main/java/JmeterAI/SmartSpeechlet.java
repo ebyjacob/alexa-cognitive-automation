@@ -72,9 +72,9 @@ import com.amazonaws.util.json.JSONTokener;
  * <p>
  * <b>Dialog model</b>
  * <p>
- * User: "Alexa, open Tide Pooler"
+ * User: "Alexa, open AI Jmeter"
  * <p>
- * Alexa: "Welcome to Tide Pooler. Which city would you like tide information for?"
+ * Alexa: "Welcome to AI Jmeter. Which city would you like tide information for?"
  * <p>
  * User: "Seattle"
  * <p>
@@ -96,7 +96,7 @@ public class SmartSpeechlet implements Speechlet {
     private static final String SESSION_DATE_REQUEST = "requestDateParam";
 
     private static final String DATUM = "MLLW";
-    private static final String ENDPOINT = "http://127.0.0.1:8023/AIJmeterTest";
+    private static final String ENDPOINT = "tcp://ec2-52-213-61-56.eu-west-1.compute.amazonaws.com:61616";
 
     // NOAA station codes
     private static final int STATION_CODE_SEATTLE = 9447130;
@@ -152,17 +152,16 @@ public class SmartSpeechlet implements Speechlet {
     }
 
     @Override
-    public SpeechletResponse onLaunch(final LaunchRequest request, final Session session)
-            throws SpeechletException {
-        log.info("onLaunch requestId={}, sessionId={}", request.getRequestId(),
+    public SpeechletResponse onLaunch(final LaunchRequest request, final Session session) throws SpeechletException 
+    {
+        		log.info("onLaunch requestId={}, sessionId={}", request.getRequestId(),
                 session.getSessionId());
-
-        return getWelcomeResponse();
+        		return getWelcomeResponse();
     }
 
     @Override
-    public SpeechletResponse onIntent(final IntentRequest request, final Session session)
-            throws SpeechletException {
+    public SpeechletResponse onIntent(final IntentRequest request, final Session session) throws SpeechletException 
+    {
         log.info("onIntent requestId={}, sessionId={}", request.getRequestId(),
                 session.getSessionId());
 
@@ -183,7 +182,7 @@ public class SmartSpeechlet implements Speechlet {
             } else {
                 return handleNoSlotDialogRequest(intent, session);
             }
-        } else if ("SupportedCitiesIntent".equals(intentName)) {
+        } else if ("SupportedTasksIntent".equals(intentName)) {
             return handleSupportedCitiesRequest(intent, session);
         } else if ("AMAZON.HelpIntent".equals(intentName)) {
             return handleHelpRequest();
@@ -210,31 +209,29 @@ public class SmartSpeechlet implements Speechlet {
     }
 
     private SpeechletResponse getWelcomeResponse() {
-        String whichCityPrompt = "Which city would you like tide information for?";
+        String whatTasks = "What task would you like to perform?";
         String speechOutput = "<speak>"
-                + "Welcome to Tide Pooler. "
+                + "Welcome to Coignizant cognitive platform of artifitial intelligence. "
                 + "<audio src='https://s3.amazonaws.com/ask-storage/tidePooler/OceanWaves.mp3'/>"
-                + whichCityPrompt
+                + whatTasks
                 + "</speak>";
         String repromptText =
-                "I can lead you through providing a city and "
-                        + "day of the week to get tide information, "
-                        + "or you can simply open Tide Pooler and ask a question like, "
-                        + "get tide information for Seattle on Saturday. "
-                        + "For a list of supported cities, ask what cities are supported. "
-                        + whichCityPrompt;
+                "I have learned how to create a jmeter test. In Future I will support more on monitoring the test started,  and can provide information from Cognizant Smart APM platform "
+                        + "You can simply open Cognizant smart A I  and ask a question like, "
+                        + "Can you start a Jmeter test?"
+                        + "For a list of supported tasks i have learned to perform, ask what tasks are supported. "
+                        + whatTasks;
 
         return newAskResponse(speechOutput, true, repromptText, false);
     }
 
     private SpeechletResponse handleHelpRequest() {
-        String repromptText = "Which city would you like tide information for?";
+        String repromptText = "What tasks would you like to perform?";
         String speechOutput =
-                "I can lead you through providing a city and "
-                        + "day of the week to get tide information, "
-                        + "or you can simply open Tide Pooler and ask a question like, "
-                        + "get tide information for Seattle on Saturday. "
-                        + "For a list of supported cities, ask what cities are supported. "
+                "Currently, I can lead you through starting a Jmeter test and "
+                        + "or you can simply Smart A I and ask a question like, "
+                        + "Can you start a Jmeter test"
+                        + "For a list of supported cities, ask what tasks are supported. "
                         + "Or you can say exit. " + repromptText;
 
         return newAskResponse(speechOutput, repromptText);
@@ -243,7 +240,7 @@ public class SmartSpeechlet implements Speechlet {
     /**
      * Handles the case where we need to know which city the user needs tide information for.
      */
-    private SpeechletResponse handleSupportedCitiesRequest(final Intent intent,
+    private SpeechletResponse handleSupportedTasksRequest(final Intent intent,
             final Session session) {
         // get city re-prompt
         String repromptText = "Which city would you like tide information for?";
@@ -369,7 +366,7 @@ public class SmartSpeechlet implements Speechlet {
      */
     private SpeechletResponse getFinalTideResponse(CityDateValues<String, String> cityStation,
             CityDateValues<String, String> date) {
-        return makeTideRequest(cityStation, date);
+        return makeStartJmeterRequest(cityStation, date);
     }
 
     /**
@@ -379,7 +376,7 @@ public class SmartSpeechlet implements Speechlet {
      * @see <a href = "http://tidesandcurrents.noaa.gov/api/">noaa.gov</a>
      * @throws IOException
      */
-    private SpeechletResponse makeTideRequest(CityDateValues<String, String> cityStation,
+    private SpeechletResponse makeStartJmeterRequest(CityDateValues<String, String> cityStation,
             CityDateValues<String, String> date) {
         String queryString =
                 String.format("?%s&station=%s&product=predictions&datum=%s&units=english"
@@ -577,9 +574,9 @@ public class SmartSpeechlet implements Speechlet {
                 .parseDouble(currentPrediction.getString("v"));
     }
 
-    /**
+    /***
      * Gets the date from the intent, defaulting to today if none provided, or returns an error.
-     */
+     **/
     private CityDateValues<String, String> getDateFromIntent(final Intent intent) {
         Slot dateSlot = intent.getSlot(SLOT_DATE);
         CityDateValues<String, String> dateObject;

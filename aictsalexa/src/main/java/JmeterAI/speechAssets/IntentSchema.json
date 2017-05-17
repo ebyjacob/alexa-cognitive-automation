@@ -1,15 +1,19 @@
 {
   "intents": [
     {
-      "intent": "OneshotTideIntent",
+      "intent": "OneshotJMIntent",
       "slots": [
         {
-          "name": "City",
-          "type": "LIST_OF_CITIES"
+          "name": "Domain",
+          "type": "LIST_OF_DOMAINS"
         },
         {
-          "name": "State",
-          "type": "LIST_OF_STATES"
+          "name": "Iteration",
+          "type": "NO_OF_ITERATIONS"
+        },
+        {
+          "name": "USERS",
+          "type": "NO_OF_USERS"
         },
         {
           "name": "Date",
@@ -18,16 +22,20 @@
       ]
     },
     {
-      "intent": "DialogTideIntent",
+      "intent": "DialogJMIntent",
       "slots": [
         {
-          "name": "City",
-          "type": "LIST_OF_CITIES"
+          "name": "Domain",
+          "type": "LIST_OF_DOMAINS"
         },
         {
-          "name": "State",
-          "type": "LIST_OF_STATES"
+          "name": "Iteration",
+          "type": "NO_OF_ITERATIONS"
         },
+        {
+          "name": "USERS",
+          "type": "NO_OF_USERS"
+        },        
         {
           "name": "Date",
           "type": "AMAZON.DATE"
@@ -35,7 +43,7 @@
       ]
     },
     {
-      "intent": "SupportedCitiesIntent"
+      "intent": "SupportedTasksIntent"
     },
     {
       "intent": "AMAZON.HelpIntent"
