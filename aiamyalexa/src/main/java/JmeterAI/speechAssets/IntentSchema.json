@@ -1,0 +1,50 @@
+{
+  "intents": [
+    {
+      "intent": "OneshotJMIntent",
+      "slots": [
+        {
+          "name": "Domain",
+          "type": "LIST_OF_DOMAINS"
+        },
+        {
+          "name": "USERS",
+          "type": "NO_OF_USERS"
+        },
+        {
+          "name": "Date",
+          "type": "AMAZON.DATE"
+        }
+      ]
+    },
+    {
+      "intent": "DialogJMIntent",
+      "slots": [
+        {
+          "name": "Domain",
+          "type": "LIST_OF_DOMAINS"
+        },
+        {
+          "name": "USERS",
+          "type": "NO_OF_USERS"
+        },        
+        {
+          "name": "Date",
+          "type": "AMAZON.DATE"
+        }
+      ]
+    },
+    {
+      "intent": "SupportedTasksIntent"
+    },
+    {
+      "intent": "AMAZON.HelpIntent"
+    },
+    {
+      "intent": "AMAZON.StopIntent"
+    },
+    {
+      "intent": "AMAZON.CancelIntent"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+DialogJMIntent {Domain}
+DialogJMIntent {Users}
+
+OneshotJMIntent start a test for {Domain} with {Users} users 
+
+SupportedTasksIntent what Tasks
+SupportedTasksIntent what Tasks are supported
+SupportedTasksIntent which Tasks are supported
+SupportedTasksIntent which Tasks
+SupportedTasksIntent which Tasks do you know
