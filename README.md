@@ -1,10 +1,12 @@
-#Sample AWS Lambda function for Alexa
-A simple [AWS Lambda](http://aws.amazon.com/lambda) function that demonstrates how to write a skill for the Amazon Echo using the Alexa SDK.
+#AWS Lambda function for Alexa for automation of Jmeter test script creation for a particular url / domain and run the test with a spcified number of users.
+
+
+A simple [AWS Lambda](http://aws.amazon.com/lambda) function example of tidepooler was used to show how to write a the jmeter automation skill for the Amazon Echo using the Alexa SDK.
 
 ## Concepts
 This sample shows how to create a Lambda function for handling Alexa Skill requests that:
 
- - Web service: communicate with an external web service to get invoke a Jmeter test for a domaain and number of users which is told by the end user in echo device
+ - Web service: communicate with an external web service to get invoke a Jmeter test for a domain and number of users which is told by the end user in echo device
  - Multiple optional slots: has 2 slots (domain and number of users), where the user can provide 0, 1, or 2 values, and assumes defaults for the unprovided values
  - DATE slot: demonstrates date handling and formatted date responses appropriate for speech
  - Custom slot type: demonstrates using custom slot types to handle a finite set of known values
