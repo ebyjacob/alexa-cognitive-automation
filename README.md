@@ -54,9 +54,9 @@ To run this example skill you need to do two things. The first is to deploy the 
   Alexa: "Jmeter test started with 20 users for domain www.apple.com. Once the test is complete the results will be available in csv format""
 ### Dialog model:
 
-User:  "Alexa, open Smart Testing"
-Alexa: "Welcome to Smart Testing. What domain do you need to run the test for?"
-User:  "apple"
-Alexa: "How many users?"
-User:  "20"
-Alexa: "Jmeter test started with 20 users for domain www.apple.com. Once the test is complete the results will be available in csv format""
+1. User:  "Alexa, open Smart Testing".
+2. Alexa: "Welcome to Smart Testing. What domain do you need to run the test for?".
+3. User:  "apple".
+4. Alexa: "How many users?".
+5. User:  "20".
+6. Alexa: "Jmeter test started with 20 users for domain www.apple.com. Once the test is complete the results will be available in csv format".
