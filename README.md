@@ -49,10 +49,11 @@ To run this example skill you need to do two things. The first is to deploy the 
 10. Your skill is now saved and once you are finished testing you can continue to publish your skill.
 
 ## Examples
-### One-shot model:
-  User:  "Alexa, ask Smart Testing to run a Jmeter test for domain apple with 20 users"
-  Alexa: "Jmeter test started with 20 users for domain www.apple.com. Once the test is complete the results will be available in csv format""
-### Dialog model:
+
+### A) One-shot model:
+1. User:  "Alexa, ask Smart Testing to run a Jmeter test for domain apple with 20 users"
+2. Alexa: "Jmeter test started with 20 users for domain www.apple.com. Once the test is complete the results will be available in csv format""
+### B) Dialog model:
 
 1. User:  "Alexa, open Smart Testing".
 2. Alexa: "Welcome to Smart Testing. What domain do you need to run the test for?".
